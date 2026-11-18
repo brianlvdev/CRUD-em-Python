@@ -1,7 +1,8 @@
 from crud import *
+
 def exibir_menu():
     print("\n" + "=" * 30)
-    print("       SISTEMA DE CADASTRO")
+    print("      SISTEMA DE CADASTRO")
     print("=" * 30)
     print("1 - Cadastrar Pessoa")
     print("2 - Listar Pessoas")
@@ -24,34 +25,61 @@ def main():
         opcao = input("Escolha uma opcao: ").strip()
         
         match opcao:
-            case "1":   # cadastrar pessoa
+            case "1":  # cadastrar pessoa
+                
+                sair = input("Deseja prosseguir? (s/n): ").strip().lower()
+                if sair == 'n' or sair == 'nao':
+                    continue 
+                      
                 if not Cadastrar_Pessoa():
-                    print("\n[ERRO] nao foi possivel cadastrar pessoa..")
-            
+                    print("\n ERROU *** Pressione [ENTER] para voltar...") 
+                else:
+                    print("\nPressione [ENTER] para voltar...")
             case "2":   # listar pessoa
                 if not Listar_Pessoas():
-                    print("\n[ERRO] nao foi possivel fazer a listagem..")
-            
+                    print("\nPressione [ENTER] para voltar...")
+                else:
+                    print("\nPressione [ENTER] para voltar...")
             case "3":   # atualizar pessoa
+                
+                sair = input("Deseja prosseguir? (s/n): ").strip().lower()
+                if sair == 'n' or sair == 'nao' or sair == 'N':
+                    continue
+                    
                 if not Atualizar_Pessoa():
-                    print("\n[ERRO] nao foi possivel atualizar..")
-            
+                    print("\nPressione [ENTER] para voltar...")
+                else:
+                    print("\nPressione [ENTER] para voltar...")    
+                     
             case "4":   # excluir pesssoa
+                
+                sair = input("Deseja prosseguir? (s/n): ").strip().lower()
+                if sair == 'n' or sair == 'nao' or sair == 'N':
+                    continue
+                    
                 if not Excluir_Pessoa():
-                    print("\n[ERRO] nao foi possivel concluir a exclusao..")
-            
+                    print("\nPressione [ENTER] para voltar...")
+                else:
+                    print("\nPressione [ENTER] para voltar...")
             case "5":   # buscar nome
+                
+                sair = input("Deseja prosseguir? (s/n): ").strip().lower()
+                if sair == 'n' or sair == 'nao' or sair == 'N':
+                    continue
+                    
                 if not Buscar_por_nome():
-                    print("\n[ERRO] nao foi possivel fazer a busca...")
-                    
+                    print("\nPressione [ENTER] para voltar...") 
+                else:
+                    print("\nPressione [ENTER] para voltar...")   
             case "0":   # sair
-                print("\n Encerrando sistema..")
+                print("\nEncerrando sistema..")
                 break
-                    
-            
             case _:
-                print("![ERROR]! opcao invalida, escolha uma opcao valida.")    
-        input("pressione [ENTER] para continuar...")   
+                print("\n[ERROR] Opcao invalida, escolha uma opcao valida.")
+                print("\nPressione [ENTER] para continuar...")            
+        input("")   
+            
+           
 
 if __name__ == "__main__":
     main()
